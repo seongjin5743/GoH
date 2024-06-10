@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+        }
+
+         header img {
+            max-width: 80px;
+            height: auto;
+        }
+
+        form {
+            background-color: #fff;
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .message {
+            display: none;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+        }
+        .small {
+              font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="/"><img src="/images/login1.png"></a>
+    <img src="/images/register.png">
+</header>
+<div class="message" th:text="${message}" id="messageBox"></div>
+<form action="/farm/save" method="post">
+    <label for="memberId">ID:</label><br>
+    <input type="text" id="memberId" name="memberId" th:value="${param.memberId}"><br>
+    <label for="memberEmail">이메일:</label><br>
+    <input type="text" id="memberEmail" name="memberEmail" th:value="${param.memberEmail}"><br>
+    <label for="memberPassword">비밀번호:</label><br>
+    <input type="password" id="memberPassword" name="memberPassword"><br>
+    <label for="memberName">이름:</label><br>
+    <input type="text" id="memberName" name="memberName" th:value="${param.memberName}"><br><br>
+    <input type="submit" value="다음">
+</form>
+
+<script>
+    window.onload = function() {
+        var messageBox = document.getElementById("messageBox");
+        if (messageBox.textContent.trim().length > 0) {
+            messageBox.style.display = "block";
+            setTimeout(function() {
+                messageBox.style.display = "none";
+            }, 3000);
+        }
+    };
+</script>
+</body>
+</html>
