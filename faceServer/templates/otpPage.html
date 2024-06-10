@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Check your code</title>
+    <!--
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    -->
+    <!-- 추가 부분 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/otp.css') }}">
+    <!-- 여기 까지 -->
+</head>
+<body>
+    <!-- 추가 부분 -->
+    <header>
+        <img src="{{ url_for('static', filename='image/login1.png') }}">
+        <img src="{{ url_for('static', filename='image/OTPAu.png') }}">
+    </header>
+    <!-- 여기 까지 -->
+    <div class="container">
+        <div class="card">
+            <form action="{{ url_for('otpCheck') }}" method="POST">
+                <label for="otp">{{user_email}}로 받은 코드를 입력해주세요</label><br>
+                <input type="text" id="otp" name="otp" placeholder="입력하세요" required>
+                <span class="target__time">
+                    <span id="remaining__min">3</span> : <span id="remaining__sec">00</span>
+                </span>
+                <br>
+                <input type="submit" id="complete" value="인증">
+            </form>
+        </div>
+    </div>
+
+  <script src="{{ url_for('static', filename='js/otpPage.js') }}"></script>
+</body>
+</html>

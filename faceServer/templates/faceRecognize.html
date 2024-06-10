@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- 추가 내용 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+    <!-- 여기 까지 -->
+    <title>Face Recognize</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 추가 내용 -->
+    <header>
+        <img src="{{ url_for('static', filename='image/login1.png') }}">
+        <img src="{{ url_for('static', filename='image/faceaut.png') }}">
+    </header>
+<!-- 여기 까지 -->
+    <div class="container">
+        <div class="card">
+            <h1>Recognizing...</h1>
+            <img src="{{ url_for('video_recognize') }}" width="100%">
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/faceRecognize.js') }}"></script>
+</body>
+</html>

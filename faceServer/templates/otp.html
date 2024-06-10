@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Authentication</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+        }
+
+         header img {
+            max-width: 80px; 
+            height: auto;
+        }
+          form {
+            background-color: #fff;
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="submit"] {
+            width: 15%;
+            padding: 1px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        }
+        .message {
+            display: none;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            overflow: visible;
+            padding: 0;
+            display: inline-block;
+            border: 0;
+            vertical-align: middle !important;
+            white-space: nowrap;
+            position: relative;
+            margin: 0 8px 0 7px;
+            color: #767676;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center;
+            text-decoration: none;
+        }
+        .center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<header>
+<img src="login1.png">
+<img src="OTP인증.png">
+</header>
+<div class="message" th:text="${message}" id="messageBox"></div>
+<form action="/farm/otp" method="post">
+    <label for="otp">OTP를 입력 하세요!</label><br>
+    <div class="center">
+    <input type="text" id="otp" name="otp" autofocus><br><br>
+    <input type="submit" value="제출" class="btn">
+    </div>
+</form>
+<script>
+    window.onload = function() {
+        var messageBox = document.getElementById("messageBox");
+        if (messageBox.textContent.trim().length > 0) {
+            messageBox.style.display = "block";
+            setTimeout(function() {
+                messageBox.style.display = "none";
+            }, 3000);
+        }
+    };
+</script>
+</body>
+</html>

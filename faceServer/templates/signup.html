@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>main page</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="login-BOX">
+                <a href="{{url_for('login')}}">로그인</a>
+                <h2>Sign Up</h2>
+                <form action="{{url_for('signupUser')}}" method="Post">
+                    <input type="text" name="user_id" placeholder="사용자 아이디", required><br>
+                    <input type="password" name="user_pwd" placeholder="비밀번호", required><br>
+                    <input type="text" name="user_email" placeholder="이메일", required><br>
+                    <input type="text" name="user_name" placeholder="사용자 이름", required><br>
+                    <input type="submit" value="submit">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
