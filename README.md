@@ -77,7 +77,7 @@ GoH는 얼굴 인식 기반 사용자 인증, OTP 생성 로직, 금고 잠금�
 
 ## 시스템 시연 영상
 
-[GOH 시스템 시연 영상](https://youtu.be/0aTl4sEUc6I?si=jCzvcik6S-iCKFqC)
+[GoH 시스템 시연 영상](https://youtu.be/0aTl4sEUc6I?si=jCzvcik6S-iCKFqC)
 
 ---
 
