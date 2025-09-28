@@ -16,12 +16,10 @@
             color: white;
             padding: 10px;
         }
-
-         header img {
+        header img {
             max-width: 80px;
             height: auto;
         }
-
         form {
             background-color: #fff;
             width: 300px;
@@ -57,7 +55,7 @@
             border: 1px solid #ccc;
         }
         .small {
-              font-size: 12px;
+            font-size: 12px;
             color: #999;
         }
     </style>
@@ -67,29 +65,44 @@
     <a href="/"><img src="/images/login1.png"></a>
     <img src="/images/register.png">
 </header>
-<div class="message" th:text="${message}" id="messageBox"></div>
-<form action="/farm/save" method="post">
+<div class="message" id="messageBox"></div>
+<form id="registerForm">
     <label for="memberId">ID:</label><br>
-    <input type="text" id="memberId" name="memberId" th:value="${param.memberId}"><br>
+    <input type="text" id="memberId" name="memberId"><br>
     <label for="memberEmail">이메일:</label><br>
-    <input type="text" id="memberEmail" name="memberEmail" th:value="${param.memberEmail}"><br>
+    <input type="text" id="memberEmail" name="memberEmail"><br>
     <label for="memberPassword">비밀번호:</label><br>
     <input type="password" id="memberPassword" name="memberPassword"><br>
     <label for="memberName">이름:</label><br>
-    <input type="text" id="memberName" name="memberName" th:value="${param.memberName}"><br><br>
+    <input type="text" id="memberName" name="memberName"><br><br>
     <input type="submit" value="다음">
 </form>
-
 <script>
-    window.onload = function() {
-        var messageBox = document.getElementById("messageBox");
-        if (messageBox.textContent.trim().length > 0) {
-            messageBox.style.display = "block";
-            setTimeout(function() {
-                messageBox.style.display = "none";
-            }, 3000);
-        }
+document.getElementById("registerForm").onsubmit = async function(e) {
+    e.preventDefault();
+    const data = {
+        memberId: document.getElementById("memberId").value,
+        memberEmail: document.getElementById("memberEmail").value,
+        memberPassword: document.getElementById("memberPassword").value,
+        memberName: document.getElementById("memberName").value
     };
+    const res = await fetch("/api/farm/register", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    });
+    const msg = await res.text();
+    var messageBox = document.getElementById("messageBox");
+    messageBox.textContent = msg;
+    messageBox.style.display = "block";
+    if (msg.includes("회원가입 성공")) {
+        setTimeout(() => {
+            window.location.href = "http://223.194.128.214:5000/faceRegister";
+        }, 1500);
+    } else {
+        setTimeout(() => { messageBox.style.display = "none"; }, 3000);
+    }
+};
 </script>
 </body>
 </html>

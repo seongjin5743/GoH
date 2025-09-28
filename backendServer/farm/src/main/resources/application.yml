@@ -7,10 +7,10 @@ spring:
   thymeleaf:
     cache: false
   mail:
-    host: smtp.gmail.com
+    host: smtp.naver.com
     port: 587
-    username: kt33439312@gmail.com
-    password: vnhw dsrc hsie ihzn
+    username: seongjin5743@naver.com
+    password: 8X5LCNFGR3HR
     properties:
       mail:
         smtp:

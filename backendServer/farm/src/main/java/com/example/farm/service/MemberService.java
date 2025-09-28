@@ -23,7 +23,7 @@ public class MemberService {
     private final AESUtil aesUtil;
 
     private final JavaMailSender mailSender;
-    private static final String FROM_ADDRESS = "kt33439312@gmail.com";
+    private static final String FROM_ADDRESS = "seongjin5743@naver.com";
 
     private static final int MAX_LOGIN_ATTEMPTS = 5;
     private static final long LOCK_TIME_DURATION = 5;

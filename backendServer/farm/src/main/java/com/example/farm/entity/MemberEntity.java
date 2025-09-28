@@ -36,11 +36,12 @@ public class MemberEntity {
 
     public static MemberEntity toMemberEntity(MemberDTO memberDTO){
         MemberEntity memberEntity = new MemberEntity();
-        memberEntity.setId(memberDTO.getId());
         memberEntity.setMemberId(memberDTO.getMemberId());
         memberEntity.setMemberEmail(memberDTO.getMemberEmail());
         memberEntity.setMemberName(memberDTO.getMemberName());
         memberEntity.setMemberPassword(memberDTO.getMemberPassword());
+        memberEntity.setLoginFailCount(0);
+        memberEntity.setLockUntil(null);
         return memberEntity;
     }
 }

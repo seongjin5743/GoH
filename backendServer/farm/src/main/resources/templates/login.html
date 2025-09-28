@@ -79,7 +79,7 @@
     <img src="/images/login2.png">
 </header>
 <div class="message" th:text="${message}" id="messageBox"></div>
-<form id="loginForm" action="/farm/login" method="post">
+<form id="loginForm">
     <label for="memberId">아이디:</label><br>
     <input type="text" id="memberId" name="memberId"><br>
     <label for="memberPassword">비밀번호:</label><br>
@@ -126,34 +126,29 @@
 </style>
 
 <script>
-    window.onload = function() {
-        var messageBox = document.getElementById("messageBox");
-        if (messageBox.textContent.trim().length > 0) {
-            messageBox.style.display = "block";
-            setTimeout(function() {
-                messageBox.style.display = "none";
-            }, 3000);
-        }
-
-        var loginForm = document.getElementById("loginForm");
-        var customPopup = document.getElementById("customPopup");
-        var confirmYes = document.getElementById("confirmYes");
-        var confirmNo = document.getElementById("confirmNo");
-
-        loginForm.onsubmit = function(event) {
-            event.preventDefault();
-            customPopup.style.display = "flex";
-        };
-
-        confirmYes.onclick = function() {
-            customPopup.style.display = "none";
-            loginForm.submit();
-        };
-
-        confirmNo.onclick = function() {
-            customPopup.style.display = "none";
-        };
+document.getElementById("loginForm").onsubmit = async function(e) {
+    e.preventDefault();
+    const data = {
+        memberId: document.getElementById("memberId").value,
+        memberPassword: document.getElementById("memberPassword").value
     };
+    const res = await fetch("/api/farm/login", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    });
+    const msg = await res.text();
+    var messageBox = document.getElementById("messageBox");
+    messageBox.textContent = msg;
+    messageBox.style.display = "block";
+    if (msg.includes("로그인 성공")) {
+    setTimeout(() => {
+        window.location.href = "http://223.194.128.214:5000/faceRecognize";
+    }, 1500);
+    } else {
+    setTimeout(() => { messageBox.style.display = "none"; }, 3000);
+    }
+};
 </script>
 </body>
 </html>
